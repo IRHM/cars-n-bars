@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-
-    <h3>{{ state.cars[0].make }}</h3>
+    <h3>{{ state.cars[0].make }}z</h3>
     <li v-for="item in state.cars" :key="item.id">{{ item.make }}</li>
   </div>
 </template>
@@ -12,9 +10,9 @@ import { useStore } from "vuex";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HelloWorld",
+  name: "List",
   props: {
-    msg: String,
+    items: String,
   },
   setup() {
     const { state } = useStore();

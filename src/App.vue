@@ -1,14 +1,17 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <CarsList />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import CarsList from "./components/CarsList.vue";
+import "./../node_modules/bulma/css/bulma.min.css";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    CarsList,
   },
 };
 </script>
