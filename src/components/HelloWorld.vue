@@ -5,7 +5,7 @@
     <h3>{{ state.cars[0].make }}</h3>
     <li v-for="item in state.cars" :key="item.id">{{ item.make }}</li>
   </div>
-</template> 
+</template>
 
 <script>
 import { useStore } from "vuex";
