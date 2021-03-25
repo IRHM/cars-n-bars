@@ -10,7 +10,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Car",
   props: {
-    car: Object,
+    car: String,
   },
   data() {
     return {
