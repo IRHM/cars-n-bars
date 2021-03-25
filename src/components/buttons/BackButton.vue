@@ -1,6 +1,6 @@
 <template>
   <div class="button" @click="$router.go(-1)">
-    <Icon :icon="['fas', 'user-secret']" /> BACK
+    <Icon icon="angle-left" size="2x" style="padding-right: 5px;" /> BACK
   </div>
 </template>
 
