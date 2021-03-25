@@ -1,6 +1,11 @@
 <template>
   <div class="button" @click="$router.go(-1)">
-    <Icon icon="angle-left" size="2x" style="padding-right: 5px;" /> BACK
+    <Icon
+      icon="angle-left"
+      size="2x"
+      style="padding-right: 5px; font-weight: bold;"
+    />
+    <strong>Back</strong>
   </div>
 </template>
 

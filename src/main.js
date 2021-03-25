@@ -3,10 +3,10 @@ import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faAngleLeft);
+library.add([faAngleLeft, faPen]);
 
 createApp(App)
   .use(store)
