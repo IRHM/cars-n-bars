@@ -12,8 +12,12 @@
         <div class="tile is-child box">
           <div class="columns">
             <div class="column">
-              <figure class="image is-4by3" style="object-fit: cover;">
-                <img :src="item.image" alt="Placeholder image" />
+              <figure class="image is-4by3">
+                <img
+                  :src="item.image"
+                  alt="Placeholder image"
+                  style="object-fit: cover;"
+                />
               </figure>
 
               <div class="info-box">
