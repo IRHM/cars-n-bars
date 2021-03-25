@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1>Cars</h1>
-
-    <br />
+    <h1 class="title">Cars</h1>
 
     <div class="columns is-multiline">
       <div class="column is-half car" v-for="item in state.cars" :key="item.id">
@@ -53,10 +51,6 @@ export default defineComponent({
   height: 100%;
 }
 
-h1 {
-  font-size: 40px;
-  font-weight: bolder;
-}
 h4 {
   font-size: 20px;
 }

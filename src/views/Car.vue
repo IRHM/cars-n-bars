@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ currentCar }}</h1>
+    <h1 class="title">{{ currentCar.make }} {{ currentCar.model }}</h1>
   </div>
 </template>
 

@@ -8,7 +8,7 @@ function carData() {
       transmission: "Manual",
       fuel: "Diesel",
       mileage: "300",
-      doors: "0",
+      doors: "4",
       price: "5",
       image:
         "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fyc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
@@ -21,7 +21,7 @@ function carData() {
       transmission: "Automatic",
       fuel: "Petrol",
       mileage: "300",
-      doors: "0",
+      doors: "4",
       price: "5",
       image:
         "https://carsalesbase.com/wp-content/uploads/2020/07/US-sports-car-sales-Chevrolet_Corvette.jpg",
