@@ -15,7 +15,7 @@
               <figure class="image is-4by3">
                 <img
                   :src="item.image"
-                  alt="Placeholder image"
+                  alt="Car Image"
                   style="object-fit: cover;"
                 />
               </figure>

@@ -1,5 +1,7 @@
 <template>
-  <div class="button" @click="$router.go(-1)">BACK</div>
+  <div class="button" @click="$router.go(-1)">
+    <Icon :icon="['fas', 'user-secret']" /> BACK
+  </div>
 </template>
 
 <script>
