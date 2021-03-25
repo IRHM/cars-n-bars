@@ -3,7 +3,12 @@
     <h1 class="title">Cars</h1>
 
     <div class="columns is-multiline">
-      <div class="column is-half car" v-for="item in state.cars" :key="item.id">
+      <router-link
+        class="column is-half car"
+        :to="{ name: 'car', params: { car: JSON.stringify(item) } }"
+        v-for="item in state.cars"
+        :key="item.id"
+      >
         <div class="tile is-child box">
           <div class="columns">
             <div class="column">
@@ -11,18 +16,14 @@
                 <img :src="item.image" alt="Placeholder image" />
               </figure>
 
-              <router-link
-                :to="{ name: 'car', params: { car: JSON.stringify(item) } }"
-              >
-                <div class="info-box">
-                  <h1 class="title">{{ item.model }}</h1>
-                  <h4 class="subtitle">${{ item.price }}</h4>
-                </div>
-              </router-link>
+              <div class="info-box">
+                <h1 class="title">{{ item.model }}</h1>
+                <h4 class="subtitle">${{ item.price }}</h4>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -43,6 +44,14 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.column.car {
+  transition: transform 50ms ease-in-out;
+}
+
+.column.car:hover {
+  transform: scale(1.02);
+}
+
 .info-box {
   display: flex;
   flex-direction: column;
