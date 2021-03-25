@@ -13,10 +13,14 @@
                 <img :src="item.image" alt="Placeholder image" />
               </figure>
 
-              <div class="info-box">
-                <h1 class="title">{{ item.model }}</h1>
-                <h4 class="subtitle">${{ item.price }}</h4>
-              </div>
+              <router-link
+                :to="{ name: 'car', params: { car: JSON.stringify(item) } }"
+              >
+                <div class="info-box">
+                  <h1 class="title">{{ item.model }}</h1>
+                  <h4 class="subtitle">${{ item.price }}</h4>
+                </div>
+              </router-link>
             </div>
           </div>
         </div>

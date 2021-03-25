@@ -15,4 +15,9 @@ export default createStore({
       state.year = year;
     },
   },
+  getters: {
+    getCar: (state, id) => {
+      return state.cars.filter((state) => id == state.cars.id);
+    },
+  },
 });
