@@ -1,12 +1,15 @@
 <template>
   <div class="box">
-    <h1 class="title">{{ currentCar.make }} {{ currentCar.model }}</h1>
+    <h1 class="title is-1">{{ currentCar.make }} {{ currentCar.model }}</h1>
 
     <nav class="level">
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Price</p>
-          <p class="title">${{ currentCar.price }}</p>
+          <div>
+            <span class="subtitle">$</span>
+            <span class="title">{{ currentCar.price }}</span>
+          </div>
         </div>
       </div>
 
