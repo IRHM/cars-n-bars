@@ -1,5 +1,7 @@
 <template>
   <div class="box">
+    <BackButton style="position: absolute; top: 10px; left: 10px;" />
+
     <h1 class="title is-1">{{ currentCar.make }} {{ currentCar.model }}</h1>
 
     <nav class="level">
@@ -58,9 +60,13 @@
 
 <script>
 import { defineComponent } from "vue";
+import BackButton from "./../components/buttons/BackButton.vue";
 
 export default defineComponent({
   name: "Car",
+  components: {
+    BackButton,
+  },
   props: {
     car: String,
   },
