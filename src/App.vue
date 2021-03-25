@@ -1,18 +1,14 @@
 <template>
   <div class="container">
-    <CarsList />
+    <router-view />
   </div>
 </template>
 
 <script>
-import CarsList from "./components/CarsList.vue";
 import "./../node_modules/bulma/css/bulma.min.css";
 
 export default {
   name: "App",
-  components: {
-    CarsList,
-  },
 };
 </script>
 
