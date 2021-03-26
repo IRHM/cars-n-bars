@@ -2,7 +2,7 @@
   <div>
     <h1 class="title">Cars</h1>
 
-    <div class="columns is-multiline">
+    <div v-if="state.cars.length > 0" class="columns is-multiline">
       <router-link
         class="column is-half car"
         :to="{ name: 'car', params: { car: JSON.stringify(item) } }"
@@ -28,6 +28,9 @@
           </div>
         </div>
       </router-link>
+    </div>
+    <div v-else>
+      <h1 class="subtitle">No Cars Found</h1>
     </div>
   </div>
 </template>
