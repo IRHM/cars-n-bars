@@ -7,7 +7,7 @@
 
       <div class="level-right" style="margin: 5px 0px;">
         <button
-          v-on:click="updateCar"
+          @click="toggleEditMode"
           class="button level-item"
           style="margin: 5px;"
         >
@@ -21,8 +21,10 @@
     </nav>
 
     <div class="box">
-      <!-- <h1 class="title is-1">{{ currentCar.make }} {{ currentCar.model }}</h1> -->
-      <div class="car-name-input columns is-centered">
+      <h1 v-if="!isEditing" class="title is-1">
+        {{ currentCar.make }} {{ currentCar.model }}
+      </h1>
+      <div v-else class="car-name-input columns is-centered">
         <input
           class="input title is-3"
           type="text"
@@ -40,7 +42,9 @@
       <nav class="level">
         <div class="field has-text-centered">
           <p class="heading">Price ($)</p>
-          <div class="control">
+
+          <p v-if="!isEditing" class="title">${{ currentCar.price }}</p>
+          <div v-else class="control">
             <input
               class="input"
               type="text"
@@ -52,7 +56,9 @@
 
         <div class="field">
           <p class="heading">Transmission</p>
-          <div class="control">
+
+          <p v-if="!isEditing" class="title">{{ currentCar.transmission }}</p>
+          <div v-else class="control">
             <div class="select" id="v-model-select">
               <select v-model="currentCar.transmission">
                 <option>Manual</option>
@@ -64,7 +70,9 @@
 
         <div class="field has-text-centered">
           <p class="heading">Body Type</p>
-          <div class="control">
+
+          <p v-if="!isEditing" class="title">{{ currentCar.bodyType }}</p>
+          <div v-else class="control">
             <input
               class="input"
               type="text"
@@ -76,7 +84,9 @@
 
         <div class="control">
           <p class="heading">Doors</p>
-          <div class="control" id="v-model-radiobutton">
+
+          <p v-if="!isEditing" class="title">{{ currentCar.doors }}</p>
+          <div v-else class="control" id="v-model-radiobutton">
             <label class="radio">
               <input
                 type="radio"
@@ -114,7 +124,9 @@
 
         <div class="field">
           <p class="heading">Fuel</p>
-          <div class="control">
+
+          <p v-if="!isEditing" class="title">{{ currentCar.fuel }}</p>
+          <div v-else class="control">
             <div class="select" :value="currentCar.fuel" id="v-model-select">
               <select v-model="currentCar.fuel">
                 <option>Petrol</option>
@@ -126,7 +138,12 @@
 
         <div class="field has-text-centered">
           <p class="heading">Mileage</p>
-          <div class="control">
+
+          <div v-if="!isEditing">
+            <span class="title">{{ currentCar.mileage }}</span>
+            <span class="subtitle">MI</span>
+          </div>
+          <div v-else class="control">
             <input
               class="input"
               type="text"
@@ -136,7 +153,8 @@
           </div>
         </div>
       </nav>
-      <div class="field has-text-centered">
+
+      <div v-if="isEditing" class="field has-text-centered">
         <p class="heading">Car Image Link</p>
         <div class="control">
           <input
@@ -147,6 +165,7 @@
           />
         </div>
       </div>
+
       <figure class="image">
         <img :src="currentCar.image" alt="" style="object-fit: cover;" />
       </figure>
@@ -176,11 +195,20 @@ export default defineComponent({
   data() {
     return {
       currentCar: JSON.parse(this.$route.params.car),
+      // If in edit mode
+      isEditing: false,
     };
   },
   methods: {
     updateCar: function() {
       this.state.cars[this.currentCar.id - 1] = this.currentCar;
+    },
+    toggleEditMode: function() {
+      if (this.isEditing == false) {
+        this.isEditing = true;
+      } else {
+        this.isEditing = false;
+      }
     },
   },
 });
