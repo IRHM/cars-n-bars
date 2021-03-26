@@ -23,7 +23,11 @@
           <Icon icon="pen" style="padding-right: 5px;" /> Save
         </button>
 
-        <button class="button level-item is-danger" style="margin: 5px;">
+        <button
+          @click="deleteCar"
+          class="button level-item is-danger"
+          style="margin: 5px;"
+        >
           <Icon icon="pen" style="padding-right: 5px;" /> Delete
         </button>
       </div>
@@ -50,9 +54,12 @@
 
       <nav class="level">
         <div class="field has-text-centered">
-          <p class="heading">Price ($)</p>
+          <p class="heading">Price</p>
 
-          <p v-if="!isEditing" class="title">${{ currentCar.price }}</p>
+          <div v-if="!isEditing">
+            <span class="subtitle">$</span>
+            <span class="title">{{ currentCar.price }}</span>
+          </div>
           <div v-else class="control">
             <input
               class="input"
@@ -91,7 +98,7 @@
           </div>
         </div>
 
-        <div class="control">
+        <div class="field has-text-centered">
           <p class="heading">Doors</p>
 
           <p v-if="!isEditing" class="title">{{ currentCar.doors }}</p>
@@ -214,6 +221,11 @@ export default defineComponent({
 
       // Toggle out of editing mode
       this.toggleEditMode();
+    },
+    deleteCar: function() {
+      // Dispatch deleteCar action then return to cars page
+      this.$store.dispatch("deleteCar", this.currentCar);
+      this.$router.replace("/cars");
     },
     toggleEditMode: function() {
       if (this.isEditing == false) {

@@ -6,13 +6,14 @@ export default createStore({
     cars: data(),
   },
   actions: {
-    onSetYear: ({ commit }, year) => {
-      commit("setYear", year);
+    deleteCar: ({ commit }, car) => {
+      commit("deleteCar", car);
     },
   },
   mutations: {
-    setYear: (state, year) => {
-      state.year = year;
+    deleteCar: (state, car) => {
+      let carIndex = state.cars.findIndex((e) => e.id == car.id);
+      state.cars.splice(carIndex, 1);
     },
   },
   getters: {
