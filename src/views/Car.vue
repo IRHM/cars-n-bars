@@ -7,11 +7,20 @@
 
       <div class="level-right" style="margin: 5px 0px;">
         <button
+          v-if="!isEditing"
           @click="toggleEditMode"
           class="button level-item"
           style="margin: 5px;"
         >
           <Icon icon="pen" style="padding-right: 5px;" /> Edit
+        </button>
+        <button
+          v-else
+          @click="updateCar"
+          class="button level-item"
+          style="margin: 5px;"
+        >
+          <Icon icon="pen" style="padding-right: 5px;" /> Save
         </button>
 
         <button class="button level-item is-danger" style="margin: 5px;">
@@ -202,6 +211,9 @@ export default defineComponent({
   methods: {
     updateCar: function() {
       this.state.cars[this.currentCar.id - 1] = this.currentCar;
+
+      // Toggle out of editing mode
+      this.toggleEditMode();
     },
     toggleEditMode: function() {
       if (this.isEditing == false) {
