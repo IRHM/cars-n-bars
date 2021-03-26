@@ -60,13 +60,22 @@
             <span class="subtitle">$</span>
             <span class="title">{{ currentCar.price }}</span>
           </div>
-          <div v-else class="control">
-            <input
-              class="input"
-              type="text"
-              :placeholder="currentCar.price"
-              v-model="currentCar.price"
-            />
+          <div v-else class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="text"
+                :placeholder="currentCar.price"
+                v-model="currentCar.price"
+              />
+              <span class="icon is-small is-left">
+                <Icon
+                  icon="dollar-sign"
+                  size="2x"
+                  style="padding-right: 5px; font-weight: bold;"
+                />
+              </span>
+            </p>
           </div>
         </div>
 
@@ -159,13 +168,18 @@
             <span class="title">{{ currentCar.mileage }}</span>
             <span class="subtitle">MI</span>
           </div>
-          <div v-else class="control">
-            <input
-              class="input"
-              type="text"
-              :placeholder="currentCar.mileage"
-              v-model="currentCar.mileage"
-            />
+          <div v-else class="field">
+            <p class="control has-icons-right has-icons-right">
+              <input
+                class="input"
+                type="text"
+                :placeholder="currentCar.mileage"
+                v-model="currentCar.mileage"
+              />
+              <span class="icon is-small is-right">
+                MI
+              </span>
+            </p>
           </div>
         </div>
       </nav>
