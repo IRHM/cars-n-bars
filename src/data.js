@@ -63,20 +63,21 @@ function carData() {
       image:
         "https://qph.fs.quoracdn.net/main-qimg-26021ed244eec711db0da621f624d4e3-c",
     },
-    {
-      id: "5",
-      make: "Ford",
-      model: "Focus",
-      bodyType: "Convertible",
-      transmission: "Manual",
-      fuel: "Diesel",
-      mileage: "300",
-      doors: "2",
-      price: "0",
-      image:
-        "https://qph.fs.quoracdn.net/main-qimg-26021ed244eec711db0da621f624d4e3-c",
-    },
   ];
 }
 
+export function emptyCar() {
+  return {
+    id: "",
+    make: "",
+    model: "",
+    bodyType: "",
+    transmission: "",
+    fuel: "",
+    mileage: "",
+    doors: "",
+    price: "",
+    image: "",
+  };
+}
 export default carData;

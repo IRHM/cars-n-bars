@@ -2,6 +2,20 @@
   <div>
     <h1 class="title">Cars</h1>
 
+    <router-link
+      :to="{
+        name: 'car',
+        params: {
+          action: JSON.stringify('newCar'),
+          car: JSON.stringify(emptyCar),
+        },
+      }"
+    >
+      <button class="button level-item" style="margin: 5px;">
+        <Icon icon="pen" style="padding-right: 5px;" /> Add Car
+      </button>
+    </router-link>
+
     <div v-if="state.cars.length > 0" class="columns is-multiline">
       <router-link
         class="column is-half car"
@@ -38,9 +52,15 @@
 <script>
 import { useStore } from "vuex";
 import { defineComponent } from "vue";
+import { emptyCar } from "../data.js";
 
 export default defineComponent({
   name: "CarsList",
+  data() {
+    return {
+      emptyCar: emptyCar(),
+    };
+  },
   setup() {
     const { state } = useStore();
     return {

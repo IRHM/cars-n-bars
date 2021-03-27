@@ -214,6 +214,7 @@ export default defineComponent({
     BackButton,
   },
   props: {
+    action: String,
     car: String,
   },
   setup() {
@@ -222,16 +223,30 @@ export default defineComponent({
       state,
     };
   },
+  mounted() {
+    if (this.action != undefined) {
+      if (JSON.parse(this.action) == "newCar") {
+        this.isNewCar = true;
+        this.isEditing = true;
+      }
+    }
+  },
   data() {
     return {
       currentCar: JSON.parse(this.$route.params.car),
       // If in edit mode
       isEditing: false,
+      isNewCar: false,
     };
   },
   methods: {
     updateCar: function() {
-      this.state.cars[this.currentCar.id - 1] = this.currentCar;
+      if (this.isNewCar) {
+        this.currentCar.id = this.state.cars.length + 1;
+        this.state.cars.push(this.currentCar);
+      } else {
+        this.state.cars[this.currentCar.id - 1] = this.currentCar;
+      }
 
       // Toggle out of editing mode
       this.toggleEditMode();
