@@ -1,69 +1,36 @@
-function carData() {
-  return [
-    {
-      id: "1",
-      make: "Ford",
-      model: "Fiesta",
-      bodyType: "Convertible",
-      transmission: "Manual",
-      fuel: "Diesel",
-      mileage: "300",
-      doors: "4",
-      price: "5",
-      image:
-        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fyc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-    },
-    {
-      id: "2",
-      make: "Volva",
-      model: "C70",
-      bodyType: "Convertible V2",
-      transmission: "Automatic",
-      fuel: "Petrol",
-      mileage: "300",
-      doors: "3",
-      price: "5",
-      image:
-        "https://carsalesbase.com/wp-content/uploads/2020/07/US-sports-car-sales-Chevrolet_Corvette.jpg",
-    },
-    {
-      id: "3",
-      make: "BMW",
-      model: "3 Series",
-      bodyType: "Sports Car",
-      transmission: "Automatic",
-      fuel: "Petrol Infused with meth",
-      mileage: "1",
-      doors: "2",
-      price: "500000",
-      image: "https://cdn.motor1.com/images/mgl/01yvV/s1/lamborghini-sc20.jpg",
-    },
-    {
-      id: "4",
-      make: "Volkswagen",
-      model: "Beetle",
-      bodyType: "Convertible",
-      transmission: "Manual",
-      fuel: "Diesel",
-      mileage: "300",
-      doors: "0",
-      price: "5",
-      image: "https://techcrunch.com/wp-content/uploads/2020/03/DSC01909.jpeg",
-    },
-    {
-      id: "5",
-      make: "KIA",
-      model: "RIO",
-      bodyType: "Convertible",
-      transmission: "Automatic",
-      fuel: "Diesel",
-      mileage: "300",
-      doors: "2",
-      price: "0",
-      image:
-        "https://qph.fs.quoracdn.net/main-qimg-26021ed244eec711db0da621f624d4e3-c",
-    },
-  ];
+import firebase from "firebase/app";
+import "firebase/database";
+import store from "./store";
+
+var firebaseConfig = {
+  apiKey: "AIzaSyC66QiZpBaPJPvsigHhZ1we2lEghx2ydiw",
+  authDomain: "cars-n-bars.firebaseapp.com",
+  databaseURL: "https://cars-n-bars-default-rtdb.firebaseio.com",
+  projectId: "cars-n-bars",
+  storageBucket: "cars-n-bars.appspot.com",
+  messagingSenderId: "956661453994",
+  appId: "1:956661453994:web:817cc0023dc9eb9d8c2cd3",
+  measurementId: "G-P1PELNFNGR",
+};
+
+const db = firebase.initializeApp(firebaseConfig).database();
+
+async function setCarData() {
+  db.ref("/")
+    .get()
+    .then(function(snapshot) {
+      if (snapshot.exists()) {
+        // Call mutation to update state with new cars
+        store.commit("addCars", snapshot.val());
+
+        return snapshot.val();
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
 }
 
 export function emptyCar() {
@@ -80,4 +47,5 @@ export function emptyCar() {
     image: "",
   };
 }
-export default carData;
+
+export default setCarData;

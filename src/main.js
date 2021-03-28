@@ -9,8 +9,11 @@ import {
   faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import setCarData from "./data.js";
 
 library.add([faAngleLeft, faPen, faDollarSign]);
+
+setCarData();
 
 createApp(App)
   .use(store)

@@ -1,9 +1,8 @@
 import { createStore } from "vuex";
-import data from "./data.js";
 
 export default createStore({
   state: {
-    cars: data(),
+    cars: "",
   },
   actions: {
     deleteCar: ({ commit }, car) => {
@@ -14,6 +13,9 @@ export default createStore({
     deleteCar: (state, car) => {
       let carIndex = state.cars.findIndex((e) => e.id == car.id);
       state.cars.splice(carIndex, 1);
+    },
+    addCars: (state, cars) => {
+      state.cars = cars;
     },
   },
   getters: {
