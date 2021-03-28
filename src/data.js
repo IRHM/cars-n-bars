@@ -15,11 +15,12 @@ var firebaseConfig = {
 
 const db = firebase.initializeApp(firebaseConfig).database();
 
-async function setCarData() {
-  db.ref("/")
+export default async function setCarData() {
+  db.ref("/cars")
     .get()
     .then(function(snapshot) {
       if (snapshot.exists()) {
+        console.log(snapshot.val());
         // Call mutation to update state with new cars
         store.commit("addCars", snapshot.val());
 
@@ -31,6 +32,13 @@ async function setCarData() {
     .catch(function(error) {
       console.error(error);
     });
+}
+
+export function deleteCar(id) {
+  firebase
+    .database()
+    .ref(`/cars/${id}`)
+    .remove();
 }
 
 export function emptyCar() {
@@ -47,5 +55,3 @@ export function emptyCar() {
     image: "",
   };
 }
-
-export default setCarData;
