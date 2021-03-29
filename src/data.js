@@ -25,7 +25,7 @@ export default function setCarData() {
         });
         console.log(cars);
 
-        store.commit("addCars", cars);
+        store.commit("initCars", cars);
 
         return snapshot.val();
       } else {
@@ -44,6 +44,10 @@ export function deleteCar(id) {
     .remove();
 }
 
+/**
+ * Add/edit car
+ * @param {*} car The car
+ */
 export function addCar(car) {
   console.log("ADDING:", car);
   firebase

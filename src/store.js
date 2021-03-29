@@ -15,9 +15,8 @@ export default createStore({
       state.cars = state.cars.filter((e) => e.id != car.id);
       deleteCar(car.id);
     },
-    addCars: (state, cars) => {
+    initCars: (state, cars) => {
       state.cars = cars;
-      editCar(car);
     },
   },
   getters: {

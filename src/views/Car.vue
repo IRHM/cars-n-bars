@@ -41,13 +41,13 @@
         <input
           class="input title is-3"
           type="text"
-          :placeholder="currentCar.make"
+          :placeholder="currentCar.make ? currentCar.make : 'Make'"
           v-model="currentCar.make"
         />
         <input
           class="input title is-3"
           type="text"
-          :placeholder="currentCar.model"
+          :placeholder="currentCar.model ? currentCar.model : 'Model'"
           v-model="currentCar.model"
         />
       </div>
@@ -242,6 +242,10 @@ export default defineComponent({
   },
   methods: {
     updateCar: function() {
+      if (this.currentCar.doors === "") {
+        this.currentCar.doors = "4";
+      }
+
       if (this.isNewCar) {
         let lastCar = this.state.cars[this.state.cars.length - 1];
 
@@ -253,10 +257,11 @@ export default defineComponent({
         }
 
         this.state.cars.push(this.currentCar);
-        addCar(this.currentCar);
       } else {
-        this.state.cars[this.currentCar.id - 1] = this.currentCar;
+        this.state.cars[this.currentCar.id] = this.currentCar;
       }
+
+      addCar(this.currentCar);
 
       // Toggle out of editing mode
       this.toggleEditMode();
