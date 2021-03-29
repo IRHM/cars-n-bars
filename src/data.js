@@ -14,15 +14,18 @@ var firebaseConfig = {
 };
 
 const db = firebase.initializeApp(firebaseConfig).database();
-
-export default async function setCarData() {
+export default function setCarData() {
   db.ref("/cars")
     .get()
     .then(function(snapshot) {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
-        // Call mutation to update state with new cars
-        store.commit("addCars", snapshot.val());
+        let cars = [];
+        snapshot.forEach((e) => {
+          cars.push(e.val());
+        });
+        console.log(cars);
+
+        store.commit("addCars", cars);
 
         return snapshot.val();
       } else {
@@ -39,6 +42,14 @@ export function deleteCar(id) {
     .database()
     .ref(`/cars/${id}`)
     .remove();
+}
+
+export function addCar(car) {
+  console.log("ADDING:", car);
+  firebase
+    .database()
+    .ref(`/cars/${car.id}`)
+    .set(car);
 }
 
 export function emptyCar() {

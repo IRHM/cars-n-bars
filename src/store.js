@@ -3,7 +3,7 @@ import { deleteCar } from "./data";
 
 export default createStore({
   state: {
-    cars: "",
+    cars: [],
   },
   actions: {
     deleteCar: ({ commit }, car) => {
@@ -12,16 +12,12 @@ export default createStore({
   },
   mutations: {
     deleteCar: (state, car) => {
-      let carIndex = state.cars.findIndex((e) => e.id == car.id);
-      state.cars.splice(carIndex, 1);
-      deleteCar(carIndex);
+      state.cars = state.cars.filter((e) => e.id != car.id);
+      deleteCar(car.id);
     },
     addCars: (state, cars) => {
-      var carz = cars.filter(function(item) {
-        return item !== undefined;
-      });
-
-      state.cars = carz;
+      state.cars = cars;
+      editCar(car);
     },
   },
   getters: {

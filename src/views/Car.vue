@@ -207,6 +207,7 @@
 import { defineComponent } from "vue";
 import BackButton from "./../components/buttons/BackButton.vue";
 import { useStore } from "vuex";
+import { addCar } from "./../data";
 
 export default defineComponent({
   name: "Car",
@@ -242,8 +243,17 @@ export default defineComponent({
   methods: {
     updateCar: function() {
       if (this.isNewCar) {
-        this.currentCar.id = this.state.cars.length + 1;
+        let lastCar = this.state.cars[this.state.cars.length - 1];
+
+        console.log(`new car: `, lastCar);
+        if (lastCar != undefined) {
+          this.currentCar.id = lastCar.id + 1;
+        } else {
+          this.currentCar.id = 0;
+        }
+
         this.state.cars.push(this.currentCar);
+        addCar(this.currentCar);
       } else {
         this.state.cars[this.currentCar.id - 1] = this.currentCar;
       }
